@@ -2,20 +2,17 @@
 
 #include "helpers.hpp"
 
-namespace geode {
-namespace prelude {
-
-bool NewInfoLayer::init(GJGameLevel* p0, GJUserScore* p1, GJLevelList* p2)
+bool NewInfoLayer::init(GJGameLevel* gameLevel, GJUserScore* userScore, GJLevelList* levelList)
 {
-	if(!InfoLayer::init(p0, p1, p2))
+	if(!InfoLayer::init(gameLevel, userScore, levelList))
 	{
 		return false;
 	}
 
-	p0->retain();
-	m_level = p0;
+	gameLevel->retain();
+	m_level = gameLevel;
 
-	auto* translateButtonSpr = CCSprite::create("translateButton.png"_spr);
+	auto* translateButtonSpr = cocos2d::CCSprite::create("translateButton.png"_spr);
 	translateButtonSpr->setScale(2.f / 3.f);
 
 	auto* translateButton = CCMenuItemSpriteExtra::create(
@@ -41,6 +38,3 @@ void NewInfoLayer::onClose(CCObject* sender)
 	}
 	InfoLayer::onClose(sender);
 }
-
-} // namespace prelude
-} // namespace geode

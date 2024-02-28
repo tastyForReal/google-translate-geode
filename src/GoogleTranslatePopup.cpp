@@ -5,19 +5,16 @@
 #include <Geode/ui/TextArea.hpp>
 #include <Geode/utils/web.hpp>
 
-namespace geode {
-namespace prelude {
-
 bool GoogleTranslatePopup::setup(const std::string& text)
 {
 	setTitle("Google Translate");
 
 	const auto size = m_buttonMenu->getContentSize();
 
-	auto* inputLanguage = CCLabelBMFont::create("Detect Language", "goldFont.fnt");
-	auto* outputLanguage = CCLabelBMFont::create("English", "goldFont.fnt");
-	auto* inputTextArea = SimpleTextArea::create(text, "chatFont.fnt", 1, 248);
-	auto* outputTextArea = SimpleTextArea::create("Getting translation...", "chatFont.fnt", 1, 248);
+	auto* inputLanguage = cocos2d::CCLabelBMFont::create("Detect Language", "goldFont.fnt");
+	auto* outputLanguage = cocos2d::CCLabelBMFont::create("English", "goldFont.fnt");
+	auto* inputTextArea = geode::SimpleTextArea::create(text, "chatFont.fnt", 1, 248);
+	auto* outputTextArea = geode::SimpleTextArea::create("Getting translation...", "chatFont.fnt", 1, 248);
 
 	auto* openInTranslateBtnSpr =
 		ButtonSprite::create("Open in Google Translate", "bigFont.fnt", "GJ_button_05.png", 0.5f);
@@ -32,7 +29,7 @@ bool GoogleTranslatePopup::setup(const std::string& text)
 
 	inputTextArea->setAnchorPoint({0.f, 0.5f});
 	inputTextArea->setPosition({16.f, 133.f});
-	inputTextArea->setWrappingMode(WrappingMode::WORD_WRAP);
+	inputTextArea->setWrappingMode(geode::WrappingMode::WORD_WRAP);
 	inputTextArea->setMaxLines(3);
 	inputTextArea->setScale(2.f / 3.f);
 	inputTextArea->setID("input-text-area");
@@ -44,7 +41,7 @@ bool GoogleTranslatePopup::setup(const std::string& text)
 
 	outputTextArea->setAnchorPoint({0.f, 0.5f});
 	outputTextArea->setPosition({16.f, 68.f});
-	outputTextArea->setWrappingMode(WrappingMode::WORD_WRAP);
+	outputTextArea->setWrappingMode(geode::WrappingMode::WORD_WRAP);
 	outputTextArea->setMaxLines(3);
 	outputTextArea->setScale(2.f / 3.f);
 	outputTextArea->setID("output-text-area");
@@ -65,13 +62,13 @@ bool GoogleTranslatePopup::setup(const std::string& text)
 		"single?client=gtx&sl=auto&tl=en&hl=en-US&dt=t&dt=bd&dj=1&q={}",
 		urlEncode(text));
 
-	web::AsyncWebRequest()
+	geode::utils::web::AsyncWebRequest()
 		.contentType("application/json; charset=utf-8")
 		.timeout(std::chrono::seconds(10))
 		.get(url)
 		.json()
 		.then(
-			[=](const web::SentAsyncWebRequest& req, const matjson::Value& json)
+			[=](const geode::utils::web::SentAsyncWebRequest& req, const matjson::Value& json)
 			{
 				if(!req.finished())
 				{
@@ -95,7 +92,8 @@ bool GoogleTranslatePopup::setup(const std::string& text)
 		.expect(
 			[=](const std::string& text, int code)
 			{
-				auto* notification = Notification::create(fmt::format("{} ({})", text, code), NotificationIcon::Error);
+				auto* notification =
+					geode::Notification::create(fmt::format("{} ({})", text, code), geode::NotificationIcon::Error);
 
 				notification->setTime(2.f);
 				notification->show();
@@ -108,18 +106,18 @@ bool GoogleTranslatePopup::setup(const std::string& text)
 	return true;
 }
 
-void GoogleTranslatePopup::onOpenBrowserButtonClick(CCObject* sender)
+void GoogleTranslatePopup::onOpenBrowserButtonClick(cocos2d::CCObject* sender)
 {
-	web::openLinkInBrowser(m_externalLink);
+	geode::utils::web::openLinkInBrowser(m_externalLink);
 }
 
-void GoogleTranslatePopup::onClose(CCObject* sender)
+void GoogleTranslatePopup::onClose(cocos2d::CCObject* sender)
 {
 	// The popup should not be closed during translation.
 	// Without this, a game may crash if closed before translation is complete.
 	if(m_ableToClose)
 	{
-		Popup::onClose(sender);
+		geode::Popup<const std::string&>::onClose(sender);
 	}
 }
 
@@ -141,6 +139,3 @@ GoogleTranslatePopup* GoogleTranslatePopup::create(const std::string& text)
 
 	return nullptr;
 }
-
-} // namespace prelude
-} // namespace geode

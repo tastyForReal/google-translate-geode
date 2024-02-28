@@ -2,12 +2,9 @@
 
 #include "helpers.hpp"
 
-namespace geode {
-namespace prelude {
-
-void NewCommentCell::loadFromComment(GJComment* p0)
+void NewCommentCell::loadFromComment(GJComment* comment)
 {
-	auto* translateButtonSpr = CCSprite::create("translateButton.png"_spr);
+	auto* translateButtonSpr = cocos2d::CCSprite::create("translateButton.png"_spr);
 	translateButtonSpr->setScale(0.5f);
 
 	auto* translateButton = CCMenuItemSpriteExtra::create(
@@ -15,18 +12,15 @@ void NewCommentCell::loadFromComment(GJComment* p0)
 	translateButton->setID("translate-button");
 	translateButton->setPosition({315.f, 35.f});
 
-	auto* container = CCMenu::create();
+	auto* container = cocos2d::CCMenu::create();
 	container->setPosition({0, 0});
 	container->addChild(translateButton);
 	addChild(container);
 
-	CommentCell::loadFromComment(p0);
+	CommentCell::loadFromComment(comment);
 }
 
 void NewCommentCell::onTranslateButtonClick(CCObject* sender)
 {
 	createGoogleTranslatePopup(m_comment->m_commentString);
 }
-
-} // namespace prelude
-} // namespace geode

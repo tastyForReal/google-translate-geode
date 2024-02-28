@@ -2,10 +2,7 @@
 
 #include <Geode/Geode.hpp>
 
-namespace geode {
-namespace prelude {
-
-class GoogleTranslatePopup : public Popup<const std::string&>
+class GoogleTranslatePopup : public geode::prelude::Popup<const std::string&>
 {
 protected:
 	std::string m_externalLink;
@@ -13,12 +10,9 @@ protected:
 
     bool setup(const std::string& text) override;
 
-    void onOpenBrowserButtonClick(CCObject* sender);
-    void onClose(CCObject* sender) override;
+    void onOpenBrowserButtonClick(geode::prelude::CCObject* sender);
+    void onClose(geode::prelude::CCObject* sender) override;
 
 public:
     static GoogleTranslatePopup* create(const std::string& text);
 };
-
-} // namespace prelude
-} // namespace geode

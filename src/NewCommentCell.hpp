@@ -2,16 +2,10 @@
 
 #include <Geode/modify/CommentCell.hpp>
 
-namespace geode {
-namespace prelude {
-
-class NewCommentCell : public Modify<NewCommentCell, CommentCell>
+class NewCommentCell : public geode::Modify<NewCommentCell, CommentCell>
 {
 public:
-	void loadFromComment(GJComment* p0);
+	void loadFromComment(GJComment* comment);
 
-	void onTranslateButtonClick(CCObject* sender);
+	void onTranslateButtonClick(cocos2d::CCObject* sender);
 };
-
-} // namespace prelude
-} // namespace geode
