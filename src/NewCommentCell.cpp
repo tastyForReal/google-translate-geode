@@ -11,7 +11,7 @@ void NewCommentCell::loadFromComment(GJComment* comment)
 	auto* translateButton = CCMenuItemSpriteExtra::create(
 		translateButtonSpr, this, static_cast<cocos2d::SEL_MenuHandler>(&NewCommentCell::onTranslateButtonClick));
 	translateButtonSpr->setScale(compactMode ? 0.6f : 0.75f);
-	translateButton->setID("translate-button");
+	translateButton->setID("translate-button"_spr);
 
 	CommentCell::loadFromComment(comment);
 

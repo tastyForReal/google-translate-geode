@@ -23,7 +23,7 @@ bool NewInfoLayer::init(GJGameLevel* gameLevel, GJUserScore* userScore, GJLevelL
 
 	auto* translateButton = CCMenuItemSpriteExtra::create(
 		translateButtonSpr, this, static_cast<cocos2d::SEL_MenuHandler>(&NewInfoLayer::onTranslateButtonClick));
-	translateButton->setID("translate-button");
+	translateButton->setID("translate-button"_spr);
 	translateButton->setPosition({194.f, 52.f});
 
 	m_buttonMenu->addChild(translateButton);

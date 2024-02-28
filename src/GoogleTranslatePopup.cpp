@@ -25,31 +25,31 @@ bool GoogleTranslatePopup::setup(const std::string& text)
 	inputLanguage->setAnchorPoint({0.f, 0.5f});
 	inputLanguage->setPosition({16.f, 160.f});
 	inputLanguage->setScale(1.f / 3.f);
-	inputLanguage->setID("input-language");
+	inputLanguage->setID("input-language"_spr);
 
 	inputTextArea->setAnchorPoint({0.f, 0.5f});
 	inputTextArea->setPosition({16.f, 133.f});
 	inputTextArea->setWrappingMode(geode::WrappingMode::WORD_WRAP);
 	inputTextArea->setMaxLines(3);
 	inputTextArea->setScale(2.f / 3.f);
-	inputTextArea->setID("input-text-area");
+	inputTextArea->setID("input-text-area"_spr);
 
 	outputLanguage->setAnchorPoint({0.f, 0.5f});
 	outputLanguage->setPosition({16.f, 95.5f});
 	outputLanguage->setScale(1.f / 3.f);
-	outputLanguage->setID("output-language");
+	outputLanguage->setID("output-language"_spr);
 
 	outputTextArea->setAnchorPoint({0.f, 0.5f});
 	outputTextArea->setPosition({16.f, 68.f});
 	outputTextArea->setWrappingMode(geode::WrappingMode::WORD_WRAP);
 	outputTextArea->setMaxLines(3);
 	outputTextArea->setScale(2.f / 3.f);
-	outputTextArea->setID("output-text-area");
+	outputTextArea->setID("output-text-area"_spr);
 
 	openInTranslateBtnSpr->setScale(0.5f);
 	openInTranslateButton->setPosition({size.width / 2.f, 24.f});
 	openInTranslateButton->setEnabled(false);
-	openInTranslateButton->setID("open-in-translate-button");
+	openInTranslateButton->setID("open-in-translate-button"_spr);
 
 	m_buttonMenu->addChild(inputLanguage);
 	m_buttonMenu->addChild(inputTextArea);
