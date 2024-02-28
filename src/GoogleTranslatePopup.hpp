@@ -2,7 +2,7 @@
 
 #include <Geode/Geode.hpp>
 
-class GoogleTranslatePopup : public geode::prelude::Popup<const std::string&>
+class GoogleTranslatePopup : public geode::Popup<const std::string&>
 {
 protected:
 	std::string m_externalLink;
@@ -10,8 +10,8 @@ protected:
 
     bool setup(const std::string& text) override;
 
-    void onOpenBrowserButtonClick(geode::prelude::CCObject* sender);
-    void onClose(geode::prelude::CCObject* sender) override;
+    void onOpenBrowserButtonClick(cocos2d::CCObject* sender);
+    void onClose(cocos2d::CCObject* sender) override;
 
 public:
     static GoogleTranslatePopup* create(const std::string& text);
