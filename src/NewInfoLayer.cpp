@@ -18,6 +18,11 @@ bool NewInfoLayer::init(GJGameLevel* gameLevel, GJUserScore* userScore, GJLevelL
 	gameLevel->retain();
 	m_level = gameLevel;
 
+	if(m_level->m_levelDesc.empty())
+	{
+		return true;
+	}
+
 	auto* translateButtonSpr = cocos2d::CCSprite::create("translateButton.png"_spr);
 	translateButtonSpr->setScale(0.5f);
 
