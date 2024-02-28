@@ -128,14 +128,12 @@ GoogleTranslatePopup* GoogleTranslatePopup::create(const std::string& text)
 	if(ret != nullptr && ret->initAnchored(280, 210, text))
 	{
 		ret->autorelease();
-		return ret;
 	}
-
-	if(ret != nullptr)
+	else
 	{
 		delete ret;
 		ret = nullptr;
 	}
 
-	return nullptr;
+	return ret;
 }
