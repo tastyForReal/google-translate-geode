@@ -18,7 +18,8 @@ bool NewInfoLayer::init(GJGameLevel* gameLevel, GJUserScore* userScore, GJLevelL
 	gameLevel->retain();
 	m_level = gameLevel;
 
-	if(m_level->m_levelDesc.empty())
+	auto* descriptionArea = m_mainLayer->getChildByID("description-area");
+	if(m_level->m_levelDesc.empty() || descriptionArea == nullptr)
 	{
 		return true;
 	}
