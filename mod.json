@@ -19,6 +19,6 @@
 		}
 	],
 	"resources": {
-		"sprites": ["resources/translateButton.png"]
+		"sprites": ["resources/translateButton.png", "resources/translateButton_small.png"]
 	}
 }
