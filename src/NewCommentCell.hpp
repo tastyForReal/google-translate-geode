@@ -5,7 +5,7 @@
 class NewCommentCell : public geode::Modify<NewCommentCell, CommentCell>
 {
 public:
-	void loadFromComment(GJComment* p0);
+	void loadFromComment(GJComment* comment);
 
 	void onTranslateButtonClick(cocos2d::CCObject* sender);
 };

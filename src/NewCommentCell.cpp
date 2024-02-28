@@ -2,7 +2,7 @@
 
 #include "helpers.hpp"
 
-void NewCommentCell::loadFromComment(GJComment* p0)
+void NewCommentCell::loadFromComment(GJComment* comment)
 {
 	auto* translateButtonSpr = cocos2d::CCSprite::create("translateButton.png"_spr);
 	translateButtonSpr->setScale(0.5f);
@@ -17,7 +17,7 @@ void NewCommentCell::loadFromComment(GJComment* p0)
 	container->addChild(translateButton);
 	addChild(container);
 
-	CommentCell::loadFromComment(p0);
+	CommentCell::loadFromComment(comment);
 }
 
 void NewCommentCell::onTranslateButtonClick(CCObject* sender)
