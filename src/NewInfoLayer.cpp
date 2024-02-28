@@ -9,6 +9,12 @@ bool NewInfoLayer::init(GJGameLevel* gameLevel, GJUserScore* userScore, GJLevelL
 		return false;
 	}
 
+	// Do not create translate button if the info does not contain a level.
+	if(gameLevel == nullptr)
+	{
+		return true;
+	}
+
 	gameLevel->retain();
 	m_level = gameLevel;
 

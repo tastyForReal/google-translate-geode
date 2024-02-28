@@ -5,7 +5,7 @@
 		"android": "2.205",
 		"mac": "2.200"
 	},
-	"version": "v2024.228.0",
+	"version": "v2024.228.1",
 	"id": "tastyforreal.google-translate",
 	"name": "Google Translate",
 	"developer": "tastyForReal",
@@ -19,6 +19,6 @@
 		}
 	],
 	"resources": {
-		"sprites": ["resources/translateButton.png"]
+		"sprites": ["resources/translateButton.png", "resources/translateButton_small.png"]
 	}
 }
