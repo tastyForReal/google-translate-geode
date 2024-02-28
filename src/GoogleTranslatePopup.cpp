@@ -90,10 +90,10 @@ bool GoogleTranslatePopup::setup(const std::string& text)
 				m_ableToClose = true;
 			})
 		.expect(
-			[=](const std::string& text, int code)
+			[=](const std::string& message, int code)
 			{
 				auto* notification =
-					geode::Notification::create(fmt::format("{} ({})", text, code), geode::NotificationIcon::Error);
+					geode::Notification::create(fmt::format("{} ({})", message, code), geode::NotificationIcon::Error);
 
 				notification->setTime(2.f);
 				notification->show();
