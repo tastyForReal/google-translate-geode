@@ -6,4 +6,4 @@ This mod integrates Google Translate into Geometry Dash. It lets you translate a
 
 - Automatic language detection.
 - Free and unlimited translations using the free API.
-- Fast and reliable — it uses the same servers as translate.google.com.
+- Fast and reliable - it uses the same servers as translate.google.com.
