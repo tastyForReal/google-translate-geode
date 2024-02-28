@@ -1,20 +1,21 @@
 #pragma once
 
-#include "GoogleTranslatePopup.hpp"
-
 #include <algorithm>
 #include <iterator>
+#include <limits>
 #include <optional>
 #include <sstream>
 #include <string>
 #include <utility>
 
+#include "GoogleTranslatePopup.hpp"
+
 static void createGoogleTranslatePopup(const std::string& text)
 {
-	auto* popup = geode::prelude::GoogleTranslatePopup::create(text);
+	auto* popup = GoogleTranslatePopup::create(text);
 	popup->setZOrder(std::numeric_limits<int>::max());
 
-	auto* scene = geode::prelude::CCDirector::sharedDirector()->getRunningScene();
+	auto* scene = cocos2d::CCDirector::sharedDirector()->getRunningScene();
 	scene->addChild(popup);
 }
 
